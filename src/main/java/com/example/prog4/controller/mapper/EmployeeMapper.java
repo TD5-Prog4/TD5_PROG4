@@ -1,6 +1,6 @@
 package com.example.prog4.controller.mapper;
 
-import com.example.prog4.model.Employee;
+import com.example.prog4.model.employee.Employee;
 import com.example.prog4.model.exception.BadRequestException;
 import com.example.prog4.repository.PositionRepository;
 import com.example.prog4.repository.entity.Phone;

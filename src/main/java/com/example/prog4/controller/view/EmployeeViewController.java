@@ -2,7 +2,7 @@ package com.example.prog4.controller.view;
 
 import com.example.prog4.controller.PopulateController;
 import com.example.prog4.controller.mapper.EmployeeMapper;
-import com.example.prog4.model.Employee;
+import com.example.prog4.model.employee.Employee;
 import com.example.prog4.model.EmployeeFilter;
 import com.example.prog4.service.EmployeeService;
 import jakarta.servlet.http.HttpSession;

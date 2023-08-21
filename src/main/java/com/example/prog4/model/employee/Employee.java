@@ -1,8 +1,11 @@
-package com.example.prog4.model;
+package com.example.prog4.model.employee;
 
+import com.example.prog4.model.Phone;
 import com.example.prog4.repository.entity.Position;
 import com.example.prog4.repository.entity.enums.Csp;
 import com.example.prog4.repository.entity.enums.Sex;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +21,8 @@ import java.util.List;
 @Builder
 @ToString
 @AllArgsConstructor
+@Entity
+@Table(schema = "employee")
 public class Employee implements Serializable {
     private String id;
     private String firstName;
