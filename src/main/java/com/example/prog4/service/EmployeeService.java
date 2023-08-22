@@ -12,16 +12,26 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class EmployeeService {
     private EmployeeRepository repository;
+    private com.example.prog4.cnaps.repository.CnapsEmployeeRepository cnapsEmployeeRepository;
     private EmployeeManagerDao employeeManagerDao;
 
 
     public Employee getOne(String id) {
-        return repository.findById(id).orElseThrow(() -> new NotFoundException("Not found id=" + id));
+        Optional<Employee> base = repository.findById(id);
+        if (base.isEmpty()) {
+            throw new NotFoundException("Employee.Id=" + id + " was not found.");
+        }
+        Employee result = base.get();
+        Optional<com.example.prog4.cnaps.entity.CnapsEmployee> cnaps =
+                cnapsEmployeeRepository.findByEndToEndId(id);
+        cnaps.ifPresent(employee -> result.setCnaps(employee.getNumber()));
+        return result;
     }
 
     public List<Employee> getAll(EmployeeFilter filter) {
